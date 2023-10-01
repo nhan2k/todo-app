@@ -1,0 +1,19 @@
+version: '3'
+services:
+  nextjs-app:
+    container_name: my-nextjs-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+    environment:
+      NODE_ENV: production  # Change to 'development' for development environment
+    networks:
+      - nextjs-network
+
+networks:
+  nextjs-network:
+    driver: bridge
