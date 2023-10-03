@@ -1,4 +1,4 @@
-name: "CodeQL"
+name: "Workflow"
 
 on:
   push:
@@ -11,8 +11,8 @@ on:
 jobs:
   analyze:
     name: Analyze
-    runs-on: ${{ (matrix.language == 'javascript' && 'ubuntu-latest') || 'macos-latest' }}
-    timeout-minutes: ${{ (matrix.language == 'javascript' && 360) || 120 }}
+    runs-on: ${{ (matrix.language == 'typescript' && 'ubuntu-latest') || 'macos-latest' }}
+    timeout-minutes: ${{ (matrix.language == 'typescript' && 360) || 120 }}
     permissions:
       actions: read
       contents: read
@@ -21,7 +21,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: [ 'javascript' ]
+        language: [ 'typescript' ]
 
     steps:
     - name: Checkout repository
